@@ -18,13 +18,13 @@
 
     <title>Index</title>
 
-	<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
-	<link href="bootstrap-3.3.7-dist/css/myFile.css" rel="stylesheet">
+    <link href="bootstrap-3.3.7-dist/css/myFile.css" rel="stylesheet">
 
-
+    <link href="bootstrap-3.3.7-dist/css/bootstrap-datepicker3.css" rel="stylesheet">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
@@ -34,6 +34,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap-datepicker.min.js"></script>
 
 
 
@@ -278,60 +279,73 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 </style>
 
 <form class="form-inline" role="reserve"  >
-
-
-
-		
-
-		<!--	<div class="col-xs-9 col-sm-9">
-
-				<div class="col-xs-4 col-sm-4">
-
-				<font size=3px>Number of guests </font>
-
-				</div> -->
-
-		<!--	<div class="col-xs-8 col-sm-8">
-
-				<input type="radio"  name="reserve" autocomplete="off">1</input>
-
-				<input type="radio"  name="reserve" autocomplete="off">2</input>
-
-				<input type="radio"  name="reserve" autocomplete="off">3</input>
-
-				<input type="radio"  name="reserve" autocomplete="off">4</input>
-
-				<input type="radio"  name="reserve" autocomplete="off">5</input>
-
-				<input type="radio"  name="reserve" autocomplete="off">6</input>
-
-			</div> -->
-
-		<!--	<p style="padding:20px;"></p>
-
-			<div class="col-xs-4 col-sm-4"><font size=3px>Date and Time </div> -->
-
-		<!--	<div class="col-xs-8 col-sm-8">
-
-			<div class="col-xs-6 col-sm-6">
-
-			<span class="input-group">
-
-			<input type="text" class="form-control" placeholder="Date"><span class="input-group-addon"><span class="glyphicon glyphicon-calendar" ></span></span></span></div>
-
-			<div >
-
-			<span class="input-group">
-
-			<input type="text" class="form-control" placeholder="Time"><span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span></span></div>
-			</div> -->
 		<script>
-			 $(document).ready(function(){
-			 $("#calendar").datepicker()});
-		</script>
-				
-			<input type="text" id="calendar">
+		$(document).ready(function(){
+				var date_input=$('input[name="calendar"]'); //our date input has the name "date"
+				var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+				date_input.datepicker({
+					format: 'mm/dd/yyyy',
+					container: container,
+					todayHighlight: true,
+					autoclose: true,
+				})
+				// $("#calendar").datepicker()});
 
+			})
+
+
+
+
+		</script>
+
+		<!--	<style>
+
+				input[type="text"] {
+				     display: block;
+				     margin-right : 100px;
+				     margin-left : 100px;
+				}
+
+			</style>-->	
+	<div class="bootstrap-iso">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <form class="form-horizontal" method="post">
+     <div class="form-group ">
+      <label class="control-label col-sm-2 requiredField" for="calendar">
+       Available Dates
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <div class="col-sm-10">
+       <div class="input-group">
+        <div class="input-group-addon">
+         <i class="fa fa-calendar">
+         </i>
+        </div>
+        <input class="form-control" id="calendar" name="calendar" placeholder="MM/DD/YYYY" type="text"/>
+       </div>
+      </div>
+     </div>
+     <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+       <button class="btn btn-primary " name="submit" type="submit">
+        Book Now
+       </button>
+      </div>
+     </div>
+    </form>
+   </div>
+  </div>
+ </div>
+</div>	
+
+<!--			<div class=wrapper>
+			<input class="form-control" id="calendar" name="calendar" placeholder="MM/DD/YYYY" type="text"/>	
+			-<input type="text" id="calendar1" name="calend>
+			</div>
 
 			<p style="padding:16%;"></p>
 
@@ -341,7 +355,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
 			  <p style="padding:10px;"></p>
 
-			</div>
+			</div> -->
 
 			<div class="alert alert-warning alert-dismissible" role="alert" >
 
@@ -369,7 +383,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
             </div>
 
-        </div>
+        
 
     </header>
 
@@ -481,135 +495,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 </div>
 
 </div>
-<!--
- <div class="row row-content">
 
-		<div class="media col-xs-9 col-sm-9">
-
-		<div class="media-left media middle">
-
-		<a href="#">
-
-		<img class="media-object img-thumbnail" src="img/celebration1.png" alt="Uthappizza">
-
-		</a>
-
-           </div> 
-
-            <div class="media-body">
-
-                <h2 class="media-heading">Uthappizza
-
-					<span class="label label-danger label-xs">Hot</span>
-
-			<span class="badge">$4.99</span> 
-
-				</h2>
-
-                <p>A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.</p>
-
-                <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
-
-            </div>
-
-        </div>
-
-		<div>
-
-		<h3 align=center>Our Lipsmacking Culinary Creations </h3>
-
-		</div>
-
-		</div>
-
-        <div class="row row-content">
-
-			<div class="col-xs-3 col-sm-2 ">
-
-		<h3 align=center>
-
-		This Month's Promotion </h3>
-
-		</div>
-
-		  <div class="media col-xs-9 col-sm-10">
-
-            <div class="media-body">
-
-			<h2 class="media-heading">Weekend Grand Buffet
-
-			<span class="label label-danger label-xs">New</span>
-
-			</h2>
-
-                <p>Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person </p>
-
-                <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
-
-            </div>
-
-			<div class="media-right media middle">
-
-		<a href="#">
-
-		<img class="media-object img-thumbnail" src="img/buffet.png" alt="buffet">
-
-		</a>
-
-           </div> 
-
-        </div>
-
-		</div>
-
-        <div class="row row-content">
-
-			   <div class="media col-xs-9 col-sm-9">
-
-		<div class="media-left media middle">
-
-		<a href="#">
-
-		<img class="media-object img-thumbnail" src="img/alberto.png" alt="Alberto Somayya">
-
-		</a>
-
-            </div>    
-
-			 <div class="media-body">
-
-                <h2 class="media heading">Alberto Somayya</h2>
-
-                <h4>Executive Chef</h4>
-
-                <p>Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. </p>
-
-                <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
-
-            </div>
-
-    </div>
-
-	<div class="col-xs-3 col-sm-3">
-
-		<h3 align=center>
-
-		Meet our Culinary Specialists</h3>
-
-		</div>
-
-	</div>
-
-		<div class="row row-content">
-
-		<div class="col-xs-3 col-sm-3">
-
-		
-
-			</div>
-
-	</div>
--->
 
 <footer class="row-footer" background="grey">
 
