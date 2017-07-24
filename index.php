@@ -28,9 +28,10 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="inc/js/jquery-ui.js" > </script>
-	<link href="jquery-ui-css" rel="stylesheet">	
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+	<link href="inc/js/jquery-ui.css" rel="stylesheet"> 
+ <script src="inc/js/jquery-3.2.1.min.js"></script>
+<script src="inc/js/jquery-ui.js" > </script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
@@ -75,7 +76,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
 	<div class="navbar-header">
 
-	<button type="button" class="navbar-toggle collapsed" data-toggle="col	lapse"
+	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
 
 	data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 
@@ -99,13 +100,13 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
 	<ul class="nav navbar-nav">
 
-	<li class="active"><a href="#"><span class="glyphicon glyphicon-home"
+	<li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"
 
                          aria-hidden="true">Home</span></a></li>
 
-	<li><a href="#"><span class="glyphicon glyphicon-info-sign"
+	<li><a href="gallery.php"><span class="glyphicon glyphicon-picture"
 
-                         aria-hidden="true">About</span></a></li>
+                         aria-hidden="true">Gallery</span></a></li>
 
 	<li class="dropdown">
 
@@ -141,7 +142,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
 	</ul>
 
-	<li><a href="#"><i class="fa fa-envelope-o"></i>Contact</a></li>
+	<li><a href="aboutUs.php"><i class="fa fa-envelope-o"></i>Contact</a></li>
 
 	</ul>
 
@@ -288,49 +289,50 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 					container: container,
 					todayHighlight: true,
 					autoclose: true,
-				})
+					startDate: truncateDate(new Date()),
+					//minDate:-0,
+					//maxDate:+2,
+					});
+					$('#date').datepicker('setStartDate', truncateDate(new Date()));
 				// $("#calendar").datepicker()});
 
-			})
+		});
+
+function truncateDate(date) {
+	  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
 
 
 
 
 		</script>
 
-		<!--	<style>
-
-				input[type="text"] {
-				     display: block;
-				     margin-right : 100px;
-				     margin-left : 100px;
-				}
-
-			</style>-->	
-	<div class="bootstrap-iso">
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;} .requiredField{color: Black !important;}</style>
+			
+<div class="bootstrap-iso">
  <div class="container-fluid">
   <div class="row">
-   <div class="col-md-6 col-sm-6 col-xs-12">
+   <div class="col-md-8 col-sm-8 col-xs-12">
     <form class="form-horizontal" method="post">
      <div class="form-group ">
-      <label class="control-label col-sm-2 requiredField" for="calendar">
+      <label class="control-label col-sm-4 requiredField" for="calendar">
        Available Dates
        <span class="asteriskField">
         *
        </span>
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-8">
        <div class="input-group">
         <div class="input-group-addon">
          <i class="fa fa-calendar">
          </i>
         </div>
-        <input class="form-control" id="calendar" name="calendar" placeholder="MM/DD/YYYY" type="text"/>
+        <input class="form-control" id="calendar" name="calendar" placeholder="Select a date!" type="text"/>
        </div>
       </div>
      </div>
      <div class="form-group">
-      <div class="col-sm-10 col-sm-offset-2">
+      <div class="col-sm-8 col-sm-offset-12">
        <button class="btn btn-primary " name="submit" type="submit">
         Book Now
        </button>
